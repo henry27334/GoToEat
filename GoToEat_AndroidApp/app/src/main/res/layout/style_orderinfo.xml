@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="330dp"
+    android:background="#856F6F"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp">
+
+        <TextView
+            android:id="@+id/tvODrink"
+            android:layout_width="389dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/imgODPic"
+            android:layout_width="142dp"
+            android:layout_height="144dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="55dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="223dp"
+            android:layout_height="216dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="174dp"
+            android:layout_marginTop="52dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvODSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/tvODQuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/tvOIce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/tvOSugar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/tvOCoffeanbeans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/tvOPlus"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:addStatesFromChildren="true"
+                android:ellipsize="end"
+                android:textSize="22dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/tvODPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="272dp"
+            android:text="評論" />
+
+        <TextView
+            android:id="@+id/tvOStar"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="208dp"
+            android:textSize="20dp" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBarSDC"
+            style="@style/Style_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="204dp"
+            android:numStars="5"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:isIndicator="true"/>
+
+        <TextView
+            android:id="@+id/tvOComment"
+            android:layout_width="155dp"
+            android:layout_height="77dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="243dp"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

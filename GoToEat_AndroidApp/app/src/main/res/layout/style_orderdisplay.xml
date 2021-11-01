@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="#D8B2B2"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/imgvOrder"
+            android:layout_width="66dp"
+            android:layout_height="67dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="24dp"
+            app:srcCompat="@drawable/loveicon" />
+
+        <TextView
+            android:id="@+id/tvDateStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="35dp"
+            android:text="TextView"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvOrderPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="60dp"
+            android:text="TextView"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btnInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="35dp"
+            android:text="訂單詳情" />
+    </RelativeLayout>
+</LinearLayout>

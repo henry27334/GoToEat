@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/LLAll"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/addcategoryLv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <CheckBox
+            android:id="@+id/cbxItem"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
+            android:text="CheckBox"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvProduct"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp" />
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/elegantNum"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="0"
+            app:backGroundColor="@color/colorPrimary"
+            app:finalNumber="50"
+            app:initialNumber="0"
+            app:textSize="6dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

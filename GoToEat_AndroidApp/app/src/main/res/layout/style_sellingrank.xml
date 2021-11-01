@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:background="#856F6F"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgSRdrink"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imgRank"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <TextView
+            android:id="@+id/tvRDinfo"
+            android:layout_width="198dp"
+            android:layout_height="90dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="179dp"
+            android:layout_marginTop="56dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="TextView"
+            android:textColor="#4C3B3B"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvRDrink"
+            android:layout_width="195dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="179dp"
+            android:layout_marginTop="19dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="TextView"
+            android:textColor="#191717"
+            android:textSize="22dp" />
+        />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    tools:context=".ProductProcessing.productDetail">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbDrinkDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/PinkBar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="410dp"
+        android:layout_height="660dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbDrinkDetail">
+
+        <LinearLayout
+            android:id="@+id/LinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="64dp"
+                    android:layout_height="63dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="335dp"
+                    android:layout_marginTop="19dp"
+                    android:background="@color/lightgray"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/recommendation" />
+
+                <Space
+                    android:id="@+id/imageSp1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp" />
+
+                <ImageView
+                    android:id="@+id/imgPic"
+                    android:layout_width="match_parent"
+                    android:layout_height="219dp"
+                    android:layout_below="@id/imageSp1"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:id="@+id/imageSp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:layout_below="@id/imgPic" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvLStar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="14dp" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#33000000" />
+
+            <TextView
+                android:id="@+id/tvDSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#33000000" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="14dp" />
+
+            <RelativeLayout
+                android:id="@+id/bannerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+
+                <LinearLayout
+                    android:id="@+id/linearRc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/sizeRecycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp" />
+
+                <TextView
+                    android:id="@+id/tvAddition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/edtComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/edittext_normal"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:hint="如: 雙倍奶泡、自帶杯具等等"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/LL_forFunction"
+        android:layout_width="410dp"
+        android:layout_height="50dp"
+        android:background="#E6DBDB"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="181dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20dp" />
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/elegantNum"
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            app:backGroundColor="@color/colorPrimary"
+            app:finalNumber="50"
+            app:initialNumber="1"
+            app:textSize="6dp" >
+
+        </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddToBuy"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_weight="0"
+            android:background="@color/PinkBar"
+            android:text="Button" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

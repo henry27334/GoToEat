@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <TextView
+        android:id="@+id/tvCAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="6dp"
+        android:text="TextView"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/tvCComment"
+        android:layout_width="218dp"
+        android:layout_height="66dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="69dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/edittext_normal"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+
+    <Button
+        android:id="@+id/btnCInfo"
+        android:layout_width="48dp"
+        android:layout_height="98dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="363dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider"
+        android:text="檢視詳情"
+        android:textColor="@color/black"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/tvStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="294dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarSDC"
+        style="@style/Style_ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="238dp"
+        android:layout_marginTop="36dp"
+        android:numStars="5"
+        android:scaleX="0.4"
+        android:scaleY="0.4"
+        android:isIndicator="true"/>
+
+
+</RelativeLayout>

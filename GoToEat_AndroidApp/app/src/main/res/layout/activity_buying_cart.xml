@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9D9C9E"
+    android:orientation="vertical"
+    tools:context=".FragmentModel.orderFragmentModel">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbBuyingCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BA9191"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/RVOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearBC"
+        android:layout_width="413dp"
+        android:layout_height="585dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbBuyingCart"></LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVOrder"
+        android:layout_width="413dp"
+        android:layout_height="592dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbBuyingCart" />
+
+    <LinearLayout
+        android:id="@+id/linearFinish"
+        android:layout_width="415dp"
+        android:layout_height="80dp"
+        android:background="#BA9191"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvTPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnBuyIt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="0" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

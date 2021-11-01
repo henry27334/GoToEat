@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.yuhung.gotoeat">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Style_AppTheme"
+        android:usesCleartextTraffic="true"
+        android:windowSoftInputMode="adjustPan"
+        tools:replace="android:theme">
+        <activity android:name=".MemberOperation.memberUpdate"></activity>
+        <activity android:name=".shopHomePage" />
+        <activity android:name=".ProductProcessing.productDetail" />
+        <activity android:name=".ProductProcessing.productComment" />
+        <activity android:name=".ProductProcessing.buyingCart" />
+        <activity android:name=".ProductProcessing.orderInfo" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MemberOperation.memberLogin">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MemberOperation.memberSignUp" />
+    </application>
+
+</manifest>

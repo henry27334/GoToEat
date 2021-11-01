@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:orderInCategory="0"
+        android:icon="@drawable/homepage"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_menu"
+        android:orderInCategory="1"
+        android:icon="@drawable/orangejuice"
+        android:title="@string/title_menu" />
+    <item
+        android:id="@+id/navigation_order"
+        android:orderInCategory="2"
+        android:icon="@drawable/checklist"
+        android:title="@string/title_order" />
+
+    <item
+        android:id="@+id/navigation_member"
+        android:orderInCategory="3"
+        android:icon="@drawable/member_card"
+        android:title="@string/title_member" />
+
+</menu>

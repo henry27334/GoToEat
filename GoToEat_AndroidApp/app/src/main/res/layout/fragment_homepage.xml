@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#856F6F"
+    tools:context=".FragmentModel.homeFragmentModel">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/PinkBar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/bannerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_alignParentTop="true"
+                android:background="#f5f5f5"
+                android:scrollbars="none">
+
+                <com.youth.banner.indicator.RoundLinesIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_below="@+id/banner"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="visible" />
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:banner_indicator_normal_color="@android:color/white"
+                    app:banner_indicator_selected_color="@color/colorPrimary"
+                    app:banner_radius="5dp">
+
+                </com.youth.banner.Banner>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="飲品排行榜"
+                android:textSize="30dp"
+                android:textColor="@color/white"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homeRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

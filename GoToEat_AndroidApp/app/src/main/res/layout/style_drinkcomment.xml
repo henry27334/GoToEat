@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="350dp"
+    android:background="#8C6565"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvMTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="留下評價"
+            android:textColor="#FFF"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp">
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="  留下對飲料的評價"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tvTagInfo"
+            android:layout_width="134dp"
+            android:layout_height="43dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="41dp"
+            android:text=" 評分:"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+
+
+        <TextView
+            android:id="@+id/tvNewInfo"
+            android:layout_width="127dp"
+            android:layout_height="46dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="91dp"
+            android:text=" 評價:"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/edtComment"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/edittext_normal"
+            android:ems="10"
+            android:gravity="top|left"
+            android:hint="請輸入評價！"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="15dp" />
+
+        <CheckBox
+            android:id="@+id/cbxRecommend"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="208dp"
+            android:text="是否推薦飲品"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBarSDC"
+            style="@style/Style_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="109dp"
+            android:layout_marginTop="43dp"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="取消" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="完成" />
+    </LinearLayout>
+
+</LinearLayout>
