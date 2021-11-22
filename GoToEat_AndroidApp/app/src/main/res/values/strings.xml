@@ -8,8 +8,8 @@
     <string name="loginhere">已經是會員? <u>立即登入</u>></string>
     <string name="OrderPlus">配料選項 <u>點擊查看</u>></string>
 
-    <string name="IPv4">192.168.0.174</string>
-    <string name="IPv4_home">192.168.0.14</string>
+    <string name="IPv4">192.168.8.40</string>
+    <string name="IPv4_home">192.168.8.40</string>
     <string name="IPv4_Phone">192.168.43.14</string>
     <string name="SQLConnection">GoToEat_SQLConnection</string>
 
