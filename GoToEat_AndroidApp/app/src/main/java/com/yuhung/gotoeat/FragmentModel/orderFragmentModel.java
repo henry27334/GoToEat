@@ -3,12 +3,14 @@ package com.yuhung.gotoeat.FragmentModel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +38,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class orderFragmentModel extends Fragment {
 
+    private LinearLayout linearOrder;
     private View view;
     private Toolbar tbOrder;
     private RecyclerView orderRv;
 
-    private String dataBaseName, username;
+    private String dataBaseName, username, result;
     private String[] orderID, orderDate, orderDataFormate;
     private String[] countDrink, totalPrice;
     private orderRecycleView orderAdapter;
@@ -52,6 +55,7 @@ public class orderFragmentModel extends Fragment {
         setHasOptionsMenu(true);
         BindingID();
         setData();
+        checkState();
 
         tbOrder.setTitle("歷史訂單");
         tbOrder.inflateMenu(R.menu.actionbar_order);
@@ -75,6 +79,7 @@ public class orderFragmentModel extends Fragment {
     }
 
     private void BindingID(){
+        linearOrder = view.findViewById(R.id.linearOrder);
         tbOrder = view.findViewById(R.id.tbOrder);
         orderRv = view.findViewById(R.id.RVOrder);
     }
@@ -98,7 +103,7 @@ public class orderFragmentModel extends Fragment {
             PutData putData = new PutData("http://"+getText(R.string.IPv4)+ "/" + getText(R.string.SQLConnection)+ "/OrderDisplay/DisplayAllOrder.php", "POST", field, data);
             putData.startPut();
             if(putData.onComplete()){
-                String result = putData.getData();
+                result = putData.getData();
                 try {
                     JSONArray ja = new JSONArray(result);
                     JSONObject jo;
@@ -117,6 +122,7 @@ public class orderFragmentModel extends Fragment {
                     Log.e("基礎飲料設定", ex.getMessage());
                 }
 
+
                 if(!result.equals("Error: No history order.")){
 
                     orderDataFormate = new String[orderDate.length];
@@ -131,11 +137,30 @@ public class orderFragmentModel extends Fragment {
                             e.printStackTrace();
                         }
                     }
+
                 }//if
             }//onComplete
 
         }//else
     }//setData
+
+    private void checkState(){
+
+        LinearLayout.LayoutParams linearlayout_parent_params = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        linearlayout_parent_params.setMargins(0, 10, 0, 10);
+        TextView tvInfo = new TextView(getActivity());
+
+        if(result.equals("Error: No history order.")){
+
+            orderRv.setVisibility(View.GONE);
+            tvInfo.setText("\n\n\n\n目前沒有歷史訂單，快去選購吧！");
+            tvInfo.setTextSize(20);
+            tvInfo.setGravity(Gravity.CENTER);
+            linearOrder.addView(tvInfo,linearlayout_parent_params);
+
+        }
+    }//end of checkState
 
     class orderRecycleView extends RecyclerView.Adapter<orderRecycleView.ViewHolder> {
 
@@ -201,88 +226,5 @@ public class orderFragmentModel extends Fragment {
 
 
 }//end of class
-
-//class orderRecycleView extends RecyclerView.Adapter<orderRecycleView.ViewHolder>{
-//
-//    private String[] orderID, orderDate, countDrink, totalPrice;
-//
-//    public orderRecycleView(String[] orderID,String[] orderDate,String[] countDrink, String[] totalPrice){
-//        this.orderID = orderID;
-//        this.orderDate = orderDate;
-//        this.totalPrice = totalPrice;
-//        this.countDrink = countDrink;
-//    }
-//
-//    public class ViewHolder extends RecyclerView.ViewHolder{
-//
-//        private ImageView imageView;
-//        private TextView tvCountPrice,tvDateStatus;
-//        private Button btnInfo;
-//
-//        public ViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            imageView = itemView.findViewById(R.id.imageView);
-//            tvCountPrice = itemView.findViewById(R.id.tvCountPrice);
-//            tvDateStatus = itemView.findViewById(R.id.tvDateStatus);
-//            btnInfo = itemView.findViewById(R.id.btnInfo);
-//
-//        }
-//    }
-//
-//    @NonNull
-//    @Override
-//    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View viewChild = LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.style_orderdisplay,parent,false);
-//
-//        viewChild.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mOnItemClickListener != null) {
-//                    mOnItemClickListener.onItemClick(v, (int) v.getTag());
-//                }
-//            }
-//        });
-//
-//        return new ViewHolder(viewChild);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//
-//        holder.itemView.setTag(position);
-//
-//        //Glide.with(holder.itemView.getContext()).load(drinkChinese.get(customID[position])[1]).into(holder.imageView);
-//        //Log.e("??",totalPrice[position]);
-//        holder.tvCountPrice.setText( "○"+countDrink[position]+"杯飲料○"+"  NT$"+ totalPrice[position]);
-//        holder.tvDateStatus.setText( "○"+orderDate[position]+"○  已完成訂單");
-//        holder.btnInfo.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(, orderInfo.class);
-//                Log.e("Where",position+"");
-//            }
-//        });
-//
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return orderID.length;
-//    }
-//
-//    private OnItemClickListener mOnItemClickListener;
-//
-//    public static interface OnItemClickListener {
-//        //接口方法里面的参数，可以传递任意你想回调的数据，不止View 和 Item 的位置position
-//        void onItemClick(View view, int position);
-//    }
-//
-//    public void setOnItemClickListener(OnItemClickListener listener) {
-//        mOnItemClickListener = listener;
-//    }
-//
-//}
-
 
 

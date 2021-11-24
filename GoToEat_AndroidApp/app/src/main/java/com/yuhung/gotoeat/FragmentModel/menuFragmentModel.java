@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,10 +45,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class menuFragmentModel extends Fragment {
-    public String result = "Nothing";
+
 
     private View view;
-//    private LinearLayout linearMenu;
+    private LinearLayout linearMenu;
     private ExpandableListView expandableListView;
     private Toolbar toolbar;
 
@@ -57,6 +58,7 @@ public class menuFragmentModel extends Fragment {
     private ArrayList<String> productSort;//子層陣列
     private ArrayList<String> productSortPic;//子層陣列
 
+    public String result;
     private String[] productName_All = null;
     private String[] productPic_All = null;
     private String[] productSort_All = null;
@@ -67,21 +69,17 @@ public class menuFragmentModel extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_menupage, container, false);
+        view = inflater.inflate(R.layout.fragment_menupage, container, false);
 
-//        linearMenu = view.findViewById(R.id.linearMenu);
+        bindingID();
+        setData();
+        checkState();
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        toolbar = view.findViewById(R.id.tbMenus);
+
         toolbar.setTitle("各類商品");
         activity.setSupportActionBar(toolbar);
 
-        try {
-            setData();
-        }catch(Exception e){
-            Toast.makeText(getActivity(), "伺服器維修中，請稍後再嘗試。\n錯誤代碼: 2", Toast.LENGTH_SHORT).show();
-        }
-        expandableListView = view.findViewById(R.id.expandAbleListView);
         expandableListView.setGroupIndicator(null);
         //expandableListView.setChildDivider(getResources().getDrawable(R.color.lightgray));//可以先不加入，這是去子層底線用的
         myExpandableListAdapter = new MyExpandableListAdapter();
@@ -114,13 +112,21 @@ public class menuFragmentModel extends Fragment {
 
     }//end of view
 
-    public void setData() {
+
+    private void bindingID(){
+
+        toolbar = view.findViewById(R.id.tbMenus);
+        linearMenu = view.findViewById(R.id.linearMenu);
+        expandableListView = view.findViewById(R.id.expandAbleListView);
+
+    }
+
+    private void setData() {
 
         String dataBaseName = getActivity().getSharedPreferences("userData", getActivity().MODE_PRIVATE)
                 .getString("selectedShop",null);
 
         String[] field, data;
-        String result;
         PutData putData;
 
         field = new String[1];
@@ -155,46 +161,69 @@ public class menuFragmentModel extends Fragment {
             }
         }
 
-        //sortPic
-        Set<String> sortPhotoSet = new LinkedHashSet<String>();
-        for(String str : sortPhoto_All){
-            sortPhotoSet.add(str);
-        }
-
-        Iterator sortPicIt = sortPhotoSet.iterator();
-        productSortPic = new ArrayList<>();
-
-        while(sortPicIt.hasNext()){
-            String sortPicStr = (String)sortPicIt.next();
-            productSortPic.add(sortPicStr);
-            Log.i("photo", sortPicStr);
-        }
-
-        //sort
-        Set<String> sortSet = new LinkedHashSet<String>();
-        for(String str : productSort_All){
-            sortSet.add(str);
-        }
-
-        Iterator sortIt = sortSet.iterator();
-        productSort = new ArrayList<>();
-
-        while(sortIt.hasNext()){
-            String sortStr = (String)sortIt.next();
-            childArray = new ArrayList<>();//子層陣列
-            productSort.add(sortStr);
-            for (int s = 0; s < productSort_All.length; s++) {
-                if (sortStr.equals(productSort_All[s])) {
-                    HashMap<String, String> childName = new HashMap<>();//子層內容
-                    childName.put("Child1", productPic_All[s]);
-                    childName.put("Child2", productName_All[s]);
-                    childArray.add(childName);
-                }
+        Log.e("menu", result);
+        if(!result.equals("\"Error: No product on board.\"")){
+            //sortPic
+            Set<String> sortPhotoSet = new LinkedHashSet<String>();
+            for(String str : sortPhoto_All){
+                sortPhotoSet.add(str);
             }
-            mainArray.put(sortStr, childArray);
+
+            Iterator sortPicIt = sortPhotoSet.iterator();
+            productSortPic = new ArrayList<>();
+
+            while(sortPicIt.hasNext()){
+                String sortPicStr = (String)sortPicIt.next();
+                productSortPic.add(sortPicStr);
+                Log.i("photo", sortPicStr);
+            }
+
+            //sort
+            Set<String> sortSet = new LinkedHashSet<String>();
+            for(String str : productSort_All){
+                sortSet.add(str);
+            }
+
+            Iterator sortIt = sortSet.iterator();
+            productSort = new ArrayList<>();
+
+            while(sortIt.hasNext()){
+                String sortStr = (String)sortIt.next();
+                childArray = new ArrayList<>();//子層陣列
+                productSort.add(sortStr);
+                for (int s = 0; s < productSort_All.length; s++) {
+                    if (sortStr.equals(productSort_All[s])) {
+                        HashMap<String, String> childName = new HashMap<>();//子層內容
+                        childName.put("Child1", productPic_All[s]);
+                        childName.put("Child2", productName_All[s]);
+                        childArray.add(childName);
+                    }
+                }
+                mainArray.put(sortStr, childArray);
+            }
         }
+
+
 
     }//end of setData
+
+    private void checkState(){
+
+        LinearLayout.LayoutParams linearlayout_parent_params = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        linearlayout_parent_params.setMargins(0, 10, 0, 10);
+        TextView tvInfo = new TextView(getActivity());
+
+        if(result.equals("\"Error: No product on board.\"")){
+
+            expandableListView.setVisibility(View.GONE);
+            tvInfo.setText("\n\n\n\n商品整備中，請稍後再試!");
+            tvInfo.setTextSize(20);
+            tvInfo.setGravity(Gravity.CENTER);
+            linearMenu.addView(tvInfo,linearlayout_parent_params);
+
+        }
+    }//end of checkState
 
     private class MyExpandableListAdapter extends BaseExpandableListAdapter {
         @Override
@@ -280,21 +309,21 @@ public class menuFragmentModel extends Fragment {
         }
     }
 
-    private void setListViewHeight(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter();
-        int totalHeight = 0;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            View listItem = listAdapter.getView(i, null, listView);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
-        }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight
-                + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
-        listView.requestLayout();
-    }
+//    private void setListViewHeight(ListView listView) {
+//        ListAdapter listAdapter = listView.getAdapter();
+//        int totalHeight = 0;
+//        for (int i = 0; i < listAdapter.getCount(); i++) {
+//            View listItem = listAdapter.getView(i, null, listView);
+//            listItem.measure(0, 0);
+//            totalHeight += listItem.getMeasuredHeight();
+//        }
+//
+//        ViewGroup.LayoutParams params = listView.getLayoutParams();
+//        params.height = totalHeight
+//                + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+//        listView.setLayoutParams(params);
+//        listView.requestLayout();
+//    }
 
     private void setListViewHeight(ExpandableListView listView,
                                    int group) {

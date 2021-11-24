@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,8 +51,10 @@ import org.json.JSONObject;
 
 public class homeFragmentModel extends Fragment {
 
+    private LinearLayout linearHome;
     private RelativeLayout bannerLayout;
     private View view;
+    private TextView tvDrinkRank;
     private Banner banner;
     private RoundLinesIndicator indicator;
     private Toolbar tbHome;
@@ -59,7 +63,7 @@ public class homeFragmentModel extends Fragment {
     private String[] rankProductName, rankProductPic,rankProductInfo;
     public static String[] adTitle, adPhoto, adURL;
     public int[] rankReward = { R.drawable.topone, R.drawable.toptwo, R.drawable.topthree, R.drawable.topfour, R.drawable.topfive};
-    private String dataBaseName, adResult;
+    private String dataBaseName, adResult, result;
     private homeRecycleView homeRVAdapter;
     private SharedPreferences sharedPref;
 
@@ -73,6 +77,8 @@ public class homeFragmentModel extends Fragment {
         try {
             setData();
             setBanner();
+            checkState();
+
             Intent intent = getActivity().getIntent();
             String strShopChinese = intent.getStringExtra("shopChinese");
 
@@ -84,20 +90,34 @@ public class homeFragmentModel extends Fragment {
             homeRV.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false));
             homeRV.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-            if(rankProductName.length != 0) {
-                homeRVAdapter = new homeRecycleView(rankProductName, rankProductPic, rankProductInfo, rankReward);
-                homeRV.setAdapter(homeRVAdapter);
+            homeRVAdapter = new homeRecycleView(rankProductName, rankProductPic, rankProductInfo, rankReward);
+            homeRV.setAdapter(homeRVAdapter);
 
-                homeRVAdapter.setOnItemClickListener(new homeRecycleView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(getActivity(), productDetail.class);
-                        intent.putExtra("productName", rankProductName[position]);
-                        startActivity(intent);
-                    }
-                });
+            homeRVAdapter.setOnItemClickListener(new homeRecycleView.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent intent = new Intent(getActivity(), productDetail.class);
+                    intent.putExtra("productName", rankProductName[position]);
+                    startActivity(intent);
+                }
+            });
 
-            }
+
+//            if(rankProductName.length != 0) {
+//                homeRVAdapter = new homeRecycleView(rankProductName, rankProductPic, rankProductInfo, rankReward);
+//                homeRV.setAdapter(homeRVAdapter);
+//
+//                homeRVAdapter.setOnItemClickListener(new homeRecycleView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(View view, int position) {
+//                        Intent intent = new Intent(getActivity(), productDetail.class);
+//                        intent.putExtra("productName", rankProductName[position]);
+//                        startActivity(intent);
+//                    }
+//                });
+//
+//            }
+
 
         }catch(Exception ex){
 
@@ -118,6 +138,8 @@ public class homeFragmentModel extends Fragment {
         indicator = (RoundLinesIndicator) view.findViewById(R.id.indicator);
         tbHome = view.findViewById(R.id.tbHome);
         homeRV = view.findViewById(R.id.homeRV);
+        linearHome = view.findViewById(R.id.linearhome);
+        tvDrinkRank = view.findViewById(R.id.tvDrinkRank);
     }
 
     public void setData(){
@@ -126,7 +148,6 @@ public class homeFragmentModel extends Fragment {
                 .getString("selectedShop",null);
 
         String[] field, data;
-        String result;
         PutData putData;
 
         field = new String[1];
@@ -154,6 +175,7 @@ public class homeFragmentModel extends Fragment {
             } catch (Exception ex) {
                 Log.e("商品排行榜",result);
                 Log.e("商品排行榜", ex.getMessage());
+
             }
         }
 
@@ -219,6 +241,25 @@ public class homeFragmentModel extends Fragment {
         }
 
     }//end of setBanner
+
+    private void checkState(){
+
+        LinearLayout.LayoutParams linearlayout_parent_params = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        linearlayout_parent_params.setMargins(0, 10, 0, 10);
+        TextView tvInfo = new TextView(getActivity());
+
+        if(result.equals("Error: No history selling rank.")){
+
+            tvDrinkRank.setVisibility(View.INVISIBLE);
+            homeRV.setVisibility(View.GONE);
+            tvInfo.setText("\n\n\n\n歡迎光臨，盡情採購!");
+            tvInfo.setTextSize(20);
+            tvInfo.setGravity(Gravity.CENTER);
+            linearHome.addView(tvInfo,linearlayout_parent_params);
+
+        }
+    }//end of checkState
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
